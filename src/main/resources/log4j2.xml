@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Configuration status="INFO" name="cloudhub" packages="com.mulesoft.ch.logging.appender, com.splunk.logging ,org.apache.logging.log4j">
+   <Appenders>
+  
+      <SplunkHttp name="splunk" url="https://prd-p-07zzy.splunkcloud.com:8088/" token="d7da2972-77cd-481b-87ba-0d4b6fac698a" index="main" disableCertificateValidation="true">
+         <PatternLayout pattern="%-5p %d [%t] [event: %X{correlationId}] %c: %m%n" />
+      </SplunkHttp>
+   </Appenders>
+   <Loggers>
+      <AsyncLogger name="org.mule.service.http" level="WARN" />
+      <AsyncLogger name="org.mule.extension.http" level="WARN" />
+      <!-- Mule logger -->
+      <AsyncLogger name="org.mule.runtime.core.internal.processor.LoggerMessageProcessor" level="INFO" />
+      <AsyncRoot level="INFO">
+         <AppenderRef ref="splunk" />
+     </AsyncRoot>
+   </Loggers>
+</Configuration>
