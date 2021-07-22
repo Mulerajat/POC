@@ -29,6 +29,6 @@ jobs:
         if: github.event_name == 'push'
         shell: bash
         run: |
-            echo "BRANCH_NAME=231233" >> $GITHUB_ENV
-            echo ${env.BRANCH_NAME}
+            "BRANCH_NAME=231233" >> $GITHUB_ENV
+            echo "${env.BRANCH_NAME}"
 
